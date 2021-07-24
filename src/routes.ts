@@ -5,7 +5,7 @@ import { CreateUserController } from "./controllers/CreateUserController";
 
 
 //Connectando no mongo
-const uri = "mongodb+srv://userInformation:12345@userinformation.bllpo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "YourConnectURL";
 mongoose.connect(uri);
 //----
 
