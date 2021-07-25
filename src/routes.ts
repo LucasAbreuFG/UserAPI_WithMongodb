@@ -6,7 +6,7 @@ import { ListUserPerEmailController } from "./controllers/ListUserPerEmailContro
 import { ListUsersController } from "./controllers/ListUsersController";
 
 //Connectando no mongo
-const uri = "mongodb+srv://userInformation:12345@userinformation.bllpo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "YourConnection";
 mongoose.connect(uri);
 //----
 
