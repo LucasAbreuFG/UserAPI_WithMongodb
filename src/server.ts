@@ -6,7 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-
 app.use((err : Error, request: Request, response: Response, next: NextFunction) => {
     if(err instanceof Error){
         return response.status(400).json({
@@ -21,4 +20,6 @@ app.use((err : Error, request: Request, response: Response, next: NextFunction) 
 })
 
 
-app.listen(3000, () => console.log("The server is running!"));
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode");
+  });
