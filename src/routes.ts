@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //Connectando no mongo
-mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.SECRET}@wherecoffebd.zgrs6ae.mongodb.net/WhereCoffe?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://eng_soft:12345678910@wherecoffebd.zgrs6ae.mongodb.net/WhereCoffe?retryWrites=true&w=majority`)
 //----
 
 const router = Router();
