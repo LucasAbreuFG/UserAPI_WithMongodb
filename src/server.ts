@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express"
 import {router} from "./routes";
 
 const app = express();
@@ -6,11 +6,18 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-router.use((req, res, next) => {
-    console.log(req.method, req.url, res.statusCode)
-    next()
+app.use((err : Error, request: Request, response: Response, next: NextFunction) => {
+    if(err instanceof Error){
+        return response.status(400).json({
+            error: err.message
+        })
+    }
+    
+    return response.status(500).json({
+        status: "error",
+        message: "Internal Server Error"
+    })
 })
-
 
 
 app.listen(process.env.PORT || 3000, function(){
