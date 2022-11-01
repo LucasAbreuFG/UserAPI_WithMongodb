@@ -13,6 +13,11 @@ mongoose.connect(`mongodb+srv://eng_soft:12345678910@wherecoffebd.zgrs6ae.mongod
 
 const router = Router();
 
+router.use((req, res, next) => {
+    console.log(req.method, req.url, res.statusCode)
+    next()
+})
+
 const createUserController = new CreateUserController();
 const listUserController = new ListUsersController();
 const listUserPerEmailController = new ListUserPerEmailController();
