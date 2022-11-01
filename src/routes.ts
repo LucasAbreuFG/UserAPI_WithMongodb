@@ -4,10 +4,11 @@ import mongoose from "mongoose";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { ListUserPerEmailController } from "./controllers/ListUserPerEmailController";
 import { ListUsersController } from "./controllers/ListUsersController";
+import dotenv from "dotenv";
+dotenv.config();
 
 //Connectando no mongo
-const uri = "YourConnection";
-mongoose.connect(uri);
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.SECRET}@wherecoffebd.zgrs6ae.mongodb.net/WhereCoffe?retryWrites=true&w=majority`)
 //----
 
 const router = Router();
@@ -16,10 +17,10 @@ const createUserController = new CreateUserController();
 const listUserController = new ListUsersController();
 const listUserPerEmailController = new ListUserPerEmailController();
 
-router.get("/users", listUserController.handle);
-router.get("/usersEmail", listUserPerEmailController.handle);
+router.get("/coffeShop", listUserController.handle);
+router.get("/byCoffeShop", listUserPerEmailController.handle);
 
-router.post("/user", createUserController.handle);
+router.post("/coffeShop", createUserController.handle);
 
 
 

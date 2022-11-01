@@ -3,23 +3,58 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 interface IUserInterface{
-    name: string,
-    email: string,
-    password: string
+    coffeShopName: String,
+    CNPJ: String,
+    country : String,
+    district : String,
+    UF : String,
+    street : String,
+    CEP: String,
+    shopNumber : Number,
+    category: String,
+    serviceHour: String,
 }
  
 const schema = new Schema({
-    name: {
-        type:String,
-        require:true,
+    coffeShopName: {
+        type: String,
+        required: true
     },
-    email: {
-        type:String,
-        required:true,
+    CNPJ: {
+        type: String,
+        requires: true
     },
-    password:{
-        type:String,
-        required:true,
+    country: {
+        type: String,
+        requires: true
+    },
+    district: {
+        type: String,
+        requires: true
+    },
+    UF: {
+        type: String,
+        requires: true
+    },
+    street: {
+        type: String,
+        requires: true
+    },
+    CEP: {
+        type: String,
+        requires: true
+    },
+    shopNumber: {
+        type: Number,
+        requires: true
+    },
+    category: {
+        type: String,
+        requires: true
+    },
+    serviceHour: {
+        type: String,
+        requires: true
     },
 })
 

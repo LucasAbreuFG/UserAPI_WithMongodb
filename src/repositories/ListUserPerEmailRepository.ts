@@ -1,9 +1,9 @@
 import { UserSchema } from "../models/userModel";
 
 class ListUserPerEmailRepository{
-    async execute(emailUser: string){
-        const email = UserSchema.find({email: emailUser});
-        return email;
+    async execute(coffeShopName: string){
+        const coffeName = UserSchema.find({coffeShopName: coffeShopName});
+        return coffeName;
     }
 }
 

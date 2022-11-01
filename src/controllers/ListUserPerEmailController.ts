@@ -7,11 +7,11 @@ class ListUserPerEmailController{
     async handle(request:Request, response: Response){
         const listUserPerEmailRepository = new ListUserPerEmailRepository();
 
-        const email = request.query.email;
+        const coffeShopName = request.query.coffeShopName;
 
-        const users = await listUserPerEmailRepository.execute(String(email));
+        const users = await listUserPerEmailRepository.execute(String(coffeShopName));
         
-        console.log((users.query.email))
+        console.log((users.query.coffeShopName))
         return response.json(users);
     }
 }

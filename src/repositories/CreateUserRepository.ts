@@ -1,33 +1,65 @@
-import { hash } from "bcryptjs";
-import mongoose from "mongoose";
+
 import { UserSchema } from "../models/userModel";
 
-interface IUserRequest{
-    name:string,
-    email:string,
-    password:string
+interface IUserRequest {
+    coffeShopName: String,
+    CNPJ: String,
+    country: String,
+    district: String,
+    UF: String,
+    street: String,
+    CEP: String,
+    shopNumber: Number,
+    category: String,
+    serviceHour: String,
 }
 
-class CreateUserRepository{
-    async execute({name,email,password} : IUserRequest){
-        if(!email || !name || !password){
+class CreateUserRepository {
+    async execute({
+        coffeShopName,
+        CNPJ,
+        country,
+        district,
+        UF,
+        street,
+        CEP,
+        shopNumber,
+        category,
+        serviceHour
+    }: IUserRequest) {
+        if (
+            !coffeShopName ||
+            !CNPJ ||
+            !country ||
+            !district ||
+            !UF ||
+            !street ||
+            !CEP ||
+            !shopNumber ||
+            !category ||
+            !serviceHour) {
             throw new Error("Missing data, fill all filds");
         }
 
         const userAlreadyExists = await UserSchema.findOne({
-            email: email
+            coffeShopName: coffeShopName
         })
 
-        if(userAlreadyExists){
+        if (userAlreadyExists) {
             throw new Error("User email already exists")
         }
 
-        const passwordHash = await hash(password,8);
-
         const user = await UserSchema.create({
-            name: name,
-            email: email,
-            password: passwordHash
+            coffeShopName,
+            CNPJ,
+            country,
+            district,
+            UF,
+            street,
+            CEP,
+            shopNumber,
+            category,
+            serviceHour
         })
 
         await user.save();
@@ -35,4 +67,4 @@ class CreateUserRepository{
     }
 }
 
-export {CreateUserRepository};
+export { CreateUserRepository };
